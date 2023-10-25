@@ -1,0 +1,17 @@
+import:
+  - recipe/laravel.php
+
+config:
+  repository: 'https://github.com/Wemonsh/community-telegrambot.git'
+
+hosts:
+  92.53.105.140:
+    remote_user: root
+    deploy_path: '/home/rncb_hr_bot'
+
+tasks:
+  build:
+    - run: uptime
+
+after:
+  deploy:failed: deploy:unlock
