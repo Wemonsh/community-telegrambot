@@ -1,17 +1,31 @@
 import:
   - recipe/laravel.php
+  - contrib/php-fpm.php
+  - contrib/npm.php
 
 config:
-  repository: 'https://github.com/Wemonsh/community-telegrambot.git'
+  application: 'community-telegrambot'
+  repository: 'git@github.com:Wemonsh/community-telegrambot.git'
+
+  remote_user: root
+  base_deploy_path: '/home/forge'
+  keep_releases: 3
+  php_fpm_version: '8.1'
 
 hosts:
-  92.53.105.140:
-    remote_user: root
-    deploy_path: '/home/rncb_hr_bot'
+  prod:
+    hostname: '92.53.105.140'
+    deploy_path: '{{base_deploy_path}}/example.com'
+
+  stag:
+    hostname: '92.53.105.140'
+    deploy_path: '{{base_deploy_path}}/stag.example.com'
 
 tasks:
-  build:
-    - run: uptime
+  deploy:
+    - deploy:prepare
+    - deploy:vendors
+    - deploy:publish
 
 after:
   deploy:failed: deploy:unlock
