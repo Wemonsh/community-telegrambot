@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Conversations\RegistrationConversation;
 use App\Conversations\VisitOfficeConversation;
+use App\Services\Telegram\Commands\ProfileCommand;
 use BotMan\BotMan\BotMan;
 use BotMan\BotMan\BotManFactory;
 use BotMan\BotMan\Cache\LaravelCache;
@@ -26,6 +27,8 @@ class TelegramController extends Controller
 
         // Create an instance
         $botman = BotManFactory::create($config, new LaravelCache());
+
+        $botman->hears('/profile', 'App\Services\Telegram\Commands\ProfileCommand@handle');
 
         // Give the bot something to listen for.
         $botman->hears('/visit', function (BotMan $bot) {

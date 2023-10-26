@@ -53,6 +53,6 @@ class VisitOfficeConversation extends Conversation
             OfficeVisit::create(['telegram_user_uuid' => $telegram_user->uuid]);;
         }
 
-        $this->say('Посещение защитано, возвращайся завтра');
+        $this->say('Посещение засчитано, возвращайся завтра');
     }
 }
