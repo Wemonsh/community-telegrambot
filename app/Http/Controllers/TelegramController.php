@@ -33,6 +33,11 @@ class TelegramController extends Controller
         });
 
         // Give the bot something to listen for.
+        $botman->hears('/start', function (BotMan $bot) {
+            $bot->reply('добро пожаловать');
+        });
+
+        // Give the bot something to listen for.
         $botman->hears('/registration', function (BotMan $bot) {
             $bot->startConversation(new RegistrationConversation());
         });
