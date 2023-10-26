@@ -32,7 +32,8 @@ return [
     ],
 
     'telegram' => [
-        'token' => env('TELEGRAM_TOKEN')
+        'token' => env('TELEGRAM_TOKEN'),
+        'webhook' => env('TELEGRAM_WEBHOOK')
     ]
 
 ];
