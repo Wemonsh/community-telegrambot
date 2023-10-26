@@ -8,18 +8,18 @@ config:
   repository: 'https://github.com/Wemonsh/community-telegrambot.git'
 
   remote_user: root
-  base_deploy_path: '/var/www/communitybot'
+  base_deploy_path: '/var/www'
   keep_releases: 3
   php_fpm_version: '8.1'
 
 hosts:
   prod:
     hostname: '92.53.105.140'
-    deploy_path: '{{base_deploy_path}}/example.com'
+    deploy_path: '{{base_deploy_path}}/communitybot.506417-co98180.tmweb.ru'
 
   stag:
     hostname: '92.53.105.140'
-    deploy_path: '{{base_deploy_path}}/stag.example.com'
+    deploy_path: '{{base_deploy_path}}/communitybot.506417-co98180.tmweb.ru'
 
 tasks:
   deploy:
