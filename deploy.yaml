@@ -7,7 +7,7 @@ config:
   application: 'community-telegrambot'
   repository: 'https://github.com/Wemonsh/community-telegrambot.git'
 
-  remote_user: root
+  remote_user: deployer
   base_deploy_path: '/var/www'
   keep_releases: 3
   php_fpm_version: '8.1'
