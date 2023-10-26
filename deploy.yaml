@@ -15,11 +15,11 @@ config:
 hosts:
   prod:
     hostname: '92.53.105.140'
-    deploy_path: '{{base_deploy_path}}/communitybot.506417-co98180.tmweb.ru'
+    deploy_path: '{{base_deploy_path}}/community-bot.semenovog.ru'
 
   stag:
     hostname: '92.53.105.140'
-    deploy_path: '{{base_deploy_path}}/communitybot.506417-co98180.tmweb.ru'
+    deploy_path: '{{base_deploy_path}}/community-bot.semenovog.ru'
 
 tasks:
   deploy:
