@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use LevelUp\Experience\Concerns\GiveExperience;
 
 class TelegramUser extends Model
 {
     use SoftDeletes;
+    use GiveExperience;
 
     protected $fillable = [
         'name',
@@ -17,6 +18,6 @@ class TelegramUser extends Model
 
     public function office_visits()
     {
-        $this->hasMany(OfficeVisit::class, 'telegram_user_uuid', 'uuid');
+        $this->hasMany(OfficeVisit::class, 'telegram_user_id', 'id');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Conversations;
+namespace App\Services\Telegram\Conversations;
 
 use App\Models\OfficeVisit;
 use App\Models\TelegramUser;

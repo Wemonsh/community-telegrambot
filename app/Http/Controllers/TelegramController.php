@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Conversations\RegistrationConversation;
-use App\Conversations\VisitOfficeConversation;
-use App\Services\Telegram\Commands\ProfileCommand;
+use App\Services\Telegram\Conversations\RegistrationConversation;
+use App\Services\Telegram\Conversations\VisitOfficeConversation;
 use BotMan\BotMan\BotMan;
 use BotMan\BotMan\BotManFactory;
 use BotMan\BotMan\Cache\LaravelCache;
 use BotMan\BotMan\Drivers\DriverManager;
 use BotMan\Drivers\Telegram\TelegramDriver;
-use Illuminate\Http\Request;
 
 class TelegramController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Conversations;
+namespace App\Services\Telegram\Conversations;
 
 use App\Models\TelegramUser;
 use BotMan\BotMan\Messages\Conversations\Conversation;
@@ -25,10 +25,12 @@ class RegistrationConversation extends Conversation
         $this->ask('Привет! Расскажи как тебя зовут?', function(Answer $answer) {
             $this->name = $answer->getText();
 
-            TelegramUser::create([
+            $telegramUser = TelegramUser::create([
                 'name' => $this->name,
                 'telegram_id' => $this->bot->getUser()->getId()
             ]);
+
+            $telegramUser->addPoints(100);
 
             $this->say('Отлично тогда продолжим '.$this->name);
         });
