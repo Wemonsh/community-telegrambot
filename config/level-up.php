@@ -10,9 +10,9 @@ return [
     |
      */
     'user' => [
-        'foreign_key' => 'user_id',
-        'model' => App\Models\User::class,
-        'users_table' => 'users',
+        'foreign_key' => 'telegram_user_id',
+        'model' => App\Models\TelegramUser::class,
+        'users_table' => 'telegram_users',
     ],
 
     /*

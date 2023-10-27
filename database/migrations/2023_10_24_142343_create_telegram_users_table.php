@@ -8,7 +8,7 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('telegram_users', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->id();
             $table->string('name');
             $table->string('telegram_id');
             $table->timestamps();

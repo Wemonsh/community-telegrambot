@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TelegramUser extends Model
 {
-    use HasUuids, SoftDeletes;
-
-    protected $primaryKey = 'uuid';
+    use SoftDeletes;
 
     protected $fillable = [
         'name',

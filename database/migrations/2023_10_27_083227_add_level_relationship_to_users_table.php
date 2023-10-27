@@ -9,7 +9,6 @@ return new class extends Migration {
     {
         Schema::table(config('level-up.user.users_table'), function (Blueprint $table) {
             $table->foreignId('level_id')
-                ->after('remember_token')
                 ->nullable()
                 ->constrained();
         });

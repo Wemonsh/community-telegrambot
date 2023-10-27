@@ -7,10 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class OfficeVisit extends Model
 {
-    use HasUuids;
-
-    protected $primaryKey = 'uuid';
-
     protected $fillable = [
         'telegram_user_uuid'
     ];

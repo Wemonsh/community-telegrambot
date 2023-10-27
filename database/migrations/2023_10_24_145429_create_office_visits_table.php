@@ -11,11 +11,11 @@ return new class extends Migration {
 
 
         Schema::create('office_visits', function (Blueprint $table) {
-            $table->uuid()->primary();
+            $table->id();
 
             $table->foreignIdFor(TelegramUser::class, 'telegram_user_uuid')
                 ->nullable()
-                ->references('uuid')->on((new TelegramUser())->getTable())
+                ->references('id')->on((new TelegramUser())->getTable())
                 ->constrained()->cascadeOnDelete();
 
 
