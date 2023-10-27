@@ -12,27 +12,8 @@ use LevelUp\Experience\Models\Level;
 
 class HomeController extends Controller
 {
-
-    private TelegramUserRepositoryInterface $telegramRepository;
-
-    public function __construct()
-    {
-        $this->telegramRepository = new TelegramUserRepository(new TelegramUser());
-    }
     public function __invoke()
     {
-        $telegramUser = $this->telegramRepository->getByTelegramId(168048474);
-
-        $message = sprintf('Привет, %s', $telegramUser->name) . PHP_EOL . PHP_EOL;
-        $message .= sprintf('Твой текущий уровень: %s', $telegramUser->getLevel()) . PHP_EOL;
-        $message .= sprintf('До следующиего уровня: %s', $telegramUser->nextLevelAt()) . PHP_EOL . PHP_EOL;
-
-        $message .= ProgressBar::init($telegramUser->getPoints(),
-            Level::where('level', '>', $telegramUser->getLevel())->limit(1)->first(['next_level_experience'])->next_level_experience);
-
-        //$message->addPoints(300);
-        dd($message);
-
         $visits = OfficeVisit::with('telegram_user')
             ->selectRaw('count(*) as total, telegram_user_uuid')
             ->groupBy('telegram_user_uuid')
