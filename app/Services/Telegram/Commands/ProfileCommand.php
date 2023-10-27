@@ -11,6 +11,9 @@ final class ProfileCommand implements CommandInterface
 {
     public function handle(BotMan $bot): void
     {
-        $bot->reply('Профиль пользователя');
+
+        $message = 'Профиль пользователя' . PHP_EOL . 'Добро пожаловать!';
+
+        $bot->reply($message);
     }
 }
