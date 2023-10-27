@@ -33,3 +33,4 @@ class HomeController extends Controller
         return sprintf("%s%%[%s>%s]%s\r", $perc, str_repeat("=", $bar), str_repeat("_", $width-$bar), $info);
     }
 }
+
