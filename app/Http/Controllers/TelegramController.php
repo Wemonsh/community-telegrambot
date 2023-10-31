@@ -15,9 +15,7 @@ class TelegramController extends Controller
     public function __invoke()
     {
         $config = [
-             "telegram" => [
-                "token" => config('services.telegram.token')
-             ]
+
         ];
 
         // Load the driver(s) you want to use

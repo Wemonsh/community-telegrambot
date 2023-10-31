@@ -21,7 +21,7 @@ class VisitOfficeConversation extends Conversation
             return true;
         }
 
-        $officeVisits = OfficeVisit::where('telegram_user_uuid', $telegram_user->uuid)
+        $officeVisits = OfficeVisit::where('telegram_user_id', $telegram_user->id)
             ->whereBetween('created_at', [Carbon::today()->startOfDay()->format('Y-m-d H:i:s'),
                 Carbon::today()->endOfDay()->format('Y-m-d H:i:s')])->count();
 
@@ -50,7 +50,7 @@ class VisitOfficeConversation extends Conversation
     {
         $telegram_user = TelegramUser::where('telegram_id', $this->bot->getUser()->getId())->first();
         if ($telegram_user !== null) {
-            OfficeVisit::create(['telegram_user_uuid' => $telegram_user->uuid]);;
+            OfficeVisit::create(['telegram_user_id' => $telegram_user->id]);;
         }
 
         $this->say('Посещение засчитано, возвращайся завтра');

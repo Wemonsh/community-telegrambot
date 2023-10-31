@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OfficeVisit extends Model
 {
     protected $fillable = [
-        'telegram_user_uuid'
+        'telegram_user_id'
     ];
 
     public function telegram_user()
