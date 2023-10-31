@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Services\Telegram\Conversations\RegistrationConversation;
+use App\Services\Telegram\Conversations\VisitOfficeConversation;
 use BotMan\BotMan\BotMan;
 use BotMan\BotMan\BotManFactory;
 use BotMan\BotMan\Cache\LaravelCache;
@@ -32,8 +34,25 @@ class BotManController extends Controller
 
     public function handle(): void
     {
+        $this->botMan->hears('/profile', 'App\Services\Telegram\Commands\ProfileCommand@handle');
+
+        // Give the bot something to listen for.
+        $this->botMan->hears('/visit', function (BotMan $bot) {
+            $bot->startConversation(new VisitOfficeConversation());
+        });
+
+        // Give the bot something to listen for.
+        $this->botMan->hears('/start', function (BotMan $bot) {
+            $bot->reply('добро пожаловать');
+        });
+
+        // Give the bot something to listen for.
+        $this->botMan->hears('/registration', function (BotMan $bot) {
+            $bot->startConversation(new RegistrationConversation());
+        });
+
         $this->botMan->fallback(function(BotMan $bot) {
-            $bot->reply(__(''));
+            $bot->reply(__('Не понял команды'));
         });
 
         $this->botMan->listen();
