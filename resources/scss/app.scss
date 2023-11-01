@@ -15,8 +15,9 @@ body {
 .leaderboard {
   height: 100vh;
   overflow: hidden;
+  background: linear-gradient(to left, #f1f6ff 50%, #a7afca 50%);
 
-  &__logo {
+  &__logo-wrapper {
     height: 40px;
     width: auto;
     position: absolute;
@@ -25,11 +26,17 @@ body {
     z-index: 10;
   }
 
+  &__logo {
+    height: 100%;
+    max-width: 100%;
+  }
+
   &__wrapper {
     position: relative;
 
     display: flex;
     gap: 78px;
+    background: #f1f6ff;
 
     height: inherit;
     margin: 0 auto;
@@ -39,6 +46,7 @@ body {
 }
 
 .banner {
+  left: -2px;
   position: relative;
   width: 472px;
   flex-shrink: 0;
@@ -224,12 +232,16 @@ body {
     margin-bottom: 65px;
 
     td {
-      flex: 3 1 auto;
+      flex: 1;
+      width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     td:first-child {
       display: flex;
       align-items: center;
+      flex: 3;
     }
 
     tr {
