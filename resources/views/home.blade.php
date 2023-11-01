@@ -42,8 +42,8 @@
 <body>
 <div class="leaderboard">
     <div class="leaderboard__wrapper">
-        <div class="leaderboard__logo">
-            <img alt="" src="{{ asset('build/assets/images/images/logo.svg') }}">
+        <div class="leaderboard__logo-wrapper">
+            <img class="leaderboard__logo" alt="" src="{{ asset('build/assets/images/images/logo.svg') }}">
         </div>
         <div class="leaderboard__banner-block banner">
             <img alt="" class="banner__rect_2" src="{{ asset('build/assets/images/images/banner/banner-rect-2.png') }}">
