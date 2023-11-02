@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Localization;
 use App\Services\Telegram\Conversations\RegistrationConversation;
 use App\Services\Telegram\Conversations\VisitOfficeConversation;
 use BotMan\BotMan\BotMan;
@@ -52,7 +53,7 @@ class BotManController extends Controller
         });
 
         $this->botMan->fallback(function(BotMan $bot) {
-            $bot->reply('Я не понял твою команду');
+            $bot->reply(Localization::get('botman.not_found_command'));
         });
 
         $this->botMan->listen();
