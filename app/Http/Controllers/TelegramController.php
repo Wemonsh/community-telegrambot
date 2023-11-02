@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Localization;
 use App\Services\Telegram\Conversations\RegistrationConversation;
 use App\Services\Telegram\Conversations\VisitOfficeConversation;
 use BotMan\BotMan\BotMan;
@@ -42,12 +43,10 @@ class TelegramController extends Controller
         });
 
         $botman->fallback(function(BotMan $bot) {
-            $bot->reply('Sorry, I did not understand these commands. Here is a list of commands I understand: ...');
+            $bot->reply(Localization::get('botman.not_found_command'));
         });
 
         // Start listening
         $botman->listen();
     }
 }
-
-// https://api.telegram.org/bot5375693593:AAFG-XEAJXm3Uqy0Y0DI_Gau3LG92rbkKSY/setWebhook?url=https://ae12-217-25-95-112.ngrok-free.app
