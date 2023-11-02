@@ -18,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Http\Controllers\HomeController::class);
 
+Route::get('/test', function () {
+    //dd(app('translator'));
+    dd(\App\Helpers\Localization::get('botman.visit_command.welcome_questions'));
+
+    return __('botman.test2');
+});
+

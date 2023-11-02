@@ -52,7 +52,7 @@ class BotManController extends Controller
         });
 
         $this->botMan->fallback(function(BotMan $bot) {
-            $bot->reply(__('Не понял команды'));
+            $bot->reply('Я не понял твою команду');
         });
 
         $this->botMan->listen();

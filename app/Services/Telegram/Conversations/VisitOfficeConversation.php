@@ -2,6 +2,7 @@
 
 namespace App\Services\Telegram\Conversations;
 
+use App\Helpers\Localization;
 use App\Models\OfficeVisit;
 use App\Models\TelegramUser;
 use BotMan\BotMan\Messages\Conversations\Conversation;
@@ -26,7 +27,7 @@ class VisitOfficeConversation extends Conversation
                 Carbon::today()->endOfDay()->format('Y-m-d H:i:s')])->count();
 
         if ($officeVisits > 0) {
-            $this->say('Сегодня вы уже отмечались в офисе');
+            $this->say(Localization::get('botman.visit_command.visit_registered'));
         } else {
             $this->askOfficeCode();
         }
@@ -36,12 +37,12 @@ class VisitOfficeConversation extends Conversation
 
     public function askOfficeCode()
     {
-        $this->ask('Привет дорогой друг. Если хочешь отметить свое посещение офиса введи 6-значный код с экрана', function(Answer $answer) {
+        $this->ask(Localization::get('botman.visit_command.welcome_questions'), function(Answer $answer) {
             if (Cache::get('code') === (int)$answer->getText()) {
                 $this->success();
             } else {
-                $this->say('Код введен неверно. Попробуйте еще раз!');
-                $this->run();
+                $this->say(Localization::get('botman.visit_command.bad_answers'));
+                $this->askOfficeCode();
             }
         });
     }
@@ -53,6 +54,6 @@ class VisitOfficeConversation extends Conversation
             OfficeVisit::create(['telegram_user_id' => $telegram_user->id]);;
         }
 
-        $this->say('Посещение засчитано, возвращайся завтра');
+        $this->say(Localization::get('botman.visit_command.good_answers'));
     }
 }
