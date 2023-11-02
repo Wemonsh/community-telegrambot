@@ -51,7 +51,7 @@ class VisitOfficeConversation extends Conversation
     {
         $telegram_user = TelegramUser::where('telegram_id', $this->bot->getUser()->getId())->first();
         if ($telegram_user !== null) {
-            OfficeVisit::create(['telegram_user_id' => $telegram_user->id]);;
+            OfficeVisit::create(['telegram_user_id' => $telegram_user->id]);
         }
 
         $this->say(Localization::get('botman.visit_command.good_answers'));
