@@ -2,6 +2,7 @@
 
 namespace App\Services\Telegram\Conversations;
 
+use App\Helpers\Localization;
 use App\Models\TelegramUser;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
@@ -16,13 +17,13 @@ class RegistrationConversation extends Conversation
         if ($telegram_user === null) {
             $this->askName();
         } else {
-            $this->say('Вы уже зарегистрированы');
+            $this->say(Localization::get('botman.registration_command.user_exist', ['name' => $telegram_user->name]));
         }
     }
 
     public function askName()
     {
-        $this->ask('Привет! Расскажи как тебя зовут?', function(Answer $answer) {
+        $this->ask(Localization::get('botman.registration_command.ask_name.question'), function(Answer $answer) {
             $this->name = $answer->getText();
 
             $telegramUser = TelegramUser::create([
@@ -32,7 +33,7 @@ class RegistrationConversation extends Conversation
 
             $telegramUser->addPoints(100);
 
-            $this->say('Отлично тогда продолжим '.$this->name);
+            $this->say(Localization::get('botman.registration_command.ask_name.good_answer', ['name' => $this->name]));
         });
     }
 }

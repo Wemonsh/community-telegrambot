@@ -44,11 +44,6 @@ class BotManController extends Controller
 
         // Give the bot something to listen for.
         $this->botMan->hears('/start', function (BotMan $bot) {
-            $bot->reply('добро пожаловать');
-        });
-
-        // Give the bot something to listen for.
-        $this->botMan->hears('/registration', function (BotMan $bot) {
             $bot->startConversation(new RegistrationConversation());
         });
 
