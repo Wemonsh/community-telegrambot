@@ -17,7 +17,7 @@ class RegistrationConversation extends Conversation
         if ($telegram_user === null) {
             $this->askName();
         } else {
-            $this->say(Localization::get('botman.registration_command.user_exist', ['name' => $telegram_user->name]));
+            $this->say(Localization::get('botman.registration_command.user_exist'));
         }
     }
 
