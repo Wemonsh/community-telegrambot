@@ -26,7 +26,6 @@ final class ProfileCommand implements CommandInterface
 
         $message = Localization::get('botman.profile_command.info', ['name' => $telegramUser->name]) . PHP_EOL . PHP_EOL;
         $message .= Localization::get('botman.profile_command.level', ['level' => $telegramUser->getLevel()]) . PHP_EOL;
-        $message .= Localization::get('botman.profile_command.experience', ['experience' => $telegramUser->nextLevelAt()]);
 
         $bot->reply($message);
     }
