@@ -12,6 +12,7 @@ class LeaderBoard extends Component
         $visits = OfficeVisit::with('telegram_user')
             ->selectRaw('count(*) as total, telegram_user_id')
             ->groupBy('telegram_user_id')
+            ->orderByDesc('total')
             ->get();
 
         return view('livewire.leader-board', ['visits' => $visits]);
