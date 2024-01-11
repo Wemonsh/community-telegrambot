@@ -12,7 +12,7 @@ class LeaderBoard extends Component
     {
         $visits = OfficeVisit::with('telegram_user')
             ->selectRaw('count(*) as total, telegram_user_id')
-            ->whereBetween('created_at', [Carbon::now()->startOfMonth()->addDays(17)->format('Y-m-d H:i:s'), Carbon::now()->endOfMonth()->addDays(18)->format('Y-m-d H:i:s')])
+            ->whereBetween('created_at', [Carbon::now()->startOfMonth()->format('Y-m-d H:i:s'), Carbon::now()->endOfMonth()->format('Y-m-d H:i:s')])
             ->groupBy('telegram_user_id')
             ->orderByDesc('total')
             ->get();
